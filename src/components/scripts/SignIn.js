@@ -3,7 +3,6 @@ import { auth } from '../firebase/FirebaseConfig'
 import { Card, Form, Button } from 'react-bootstrap'
 
 import {
-    createUserWithEmailAndPassword,
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signOut
