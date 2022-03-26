@@ -1,0 +1,47 @@
+/* .spacer{
+    background-color: #eee;
+}
+h1{
+    margin-left: 0.5em;
+}
+
+.features{
+    color: #808080;
+}
+.features ul li{
+    border: 1px solid #eee;
+    margin: 1rem;
+}
+.convince{
+    color: #808080;
+}
+.convince .linker{
+    margin-left: 1em;
+    color: #eee;
+} */
+.ha{
+    background-color: rgb(33, 37, 41);
+}
+.container{
+    display: grid;
+    color: #eee;
+}
+.about-us{
+    color: #eee;
+}
+.about-us ul{
+    list-style: none;
+}
+.about-us li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.about-us li img{
+    scale: 1;
+    width: 175px;
+    border-radius: 50%;
+    max-width: 200px;
+    max-height: 200px;
+}

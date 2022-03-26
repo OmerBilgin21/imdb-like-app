@@ -39,9 +39,8 @@ const Signin = () => {
 
 
     return (
-        <>
-            <Card className='w-75 align-items-center'>
-                
+        <div className='reach-signin'>
+            <Card className='w-100 d-flex align-items-center' style={{maxWidth: '720px'}}>
                 <Card.Body>
                     <h2 className='text-center mb-4'>Log In</h2>
                     <Form>
@@ -59,7 +58,6 @@ const Signin = () => {
                         </Form.Group>
                         <br />
                         <Button className="w-100" onClick={login} >Sign In</Button>
-
                     </Form>
                     <div className='w-100 text-center mt-4'>
                         <h4>user logged in:</h4>
@@ -70,7 +68,7 @@ const Signin = () => {
             </Card>
 
 
-        </>
+        </div>
     );
 }
 

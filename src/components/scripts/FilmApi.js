@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Form, Button } from 'react-bootstrap'
+import { Card, ListGroup } from 'react-bootstrap'
 
 import '../css/FilmApi.css'
 
@@ -30,8 +30,8 @@ const Filmapi = () => {
                 <Card className='mt-4'>
                     <Card.Body>
                     <img className='card-image-top' src={'https://image.tmdb.org/t/p/w500'+films.poster_path} alt="poster" />
-                        <ul>
-                            <li>
+                        <ListGroup>
+                            <ListGroup.Item>
                                 <h5 className='card-title'>
                                     Name: {films.original_title}
                                 </h5>
@@ -50,8 +50,8 @@ const Filmapi = () => {
                                 <p className='text-muted'>
                                     Viewed: {films.popularity}
                                 </p>
-                            </li>
-                        </ul>
+                            </ListGroup.Item>
+                        </ListGroup>
                     </Card.Body>
                 </Card>
             </div>

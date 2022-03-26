@@ -40,7 +40,7 @@ const Signup = () => {
 
     return (
         <>
-            <Card className='w-75 align-items-center'>
+            <Card className='w-100 align-items-center' style={{maxWidth: '720px'}}>
                 <Card.Body>
                     <h2 className='text-center mb-4'>Register</h2>
                     <Form>
