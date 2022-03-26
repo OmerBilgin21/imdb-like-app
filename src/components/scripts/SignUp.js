@@ -7,15 +7,7 @@ import {
     signOut
 } from 'firebase/auth'
 import { auth } from '../firebase/FirebaseConfig'
-
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Link
-} from 'react-router-dom';
-import Signin from './SignIn';
-
+import '../css/SignUp.css'
 
 const Signup = () => {
 
@@ -48,49 +40,33 @@ const Signup = () => {
 
     return (
         <>
-            <Router>
-                <Card>
-                    <Card.Body>
-                        <h2 className='text-center mb-4'>Register</h2>
-
-                        <Form>
-                            <Form.Group>
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type='email' required onChange={(event) => {
-                                    setRegisterEmail(event.target.value);
-                                }} />
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type='password' required onChange={(event) => {
-                                    setRegisterPassword(event.target.value);
-                                }} />
-                            </Form.Group>
-                            <br />
-                            <Button className="w-100" onClick={register} >Sign Up</Button>
-                        </Form>
-
+            <Card className='w-75 align-items-center'>
+                <Card.Body>
+                    <h2 className='text-center mb-4'>Register</h2>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type='email' required onChange={(event) => {
+                                setRegisterEmail(event.target.value);
+                            }} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type='password' required onChange={(event) => {
+                                setRegisterPassword(event.target.value);
+                            }} />
+                        </Form.Group>
                         <br />
-                        <br />
+                        <Button className="w-100" onClick={register} >Sign Up</Button>
+                    </Form>
 
-                        <div className='w-100 text-center mt-2'>
-                            <h4>user logged in:</h4>
-                            {user?.email}
-                            <Button onClick={logout}>Sign Out</Button>
-                        </div>
-                    </Card.Body>
-                    <div className='w-100 text-center mt-2'>
-                        Already have an account?
-                        <Link className='text-decoration-none' to="/SingIn"> Sing In</Link>
-                        <br/>
-                        <Link className='text-decoration-none' to="/">Register</Link>
+                    <div className='w-100 text-center mt-4'>
+                        <h4>user logged in:</h4>
+                        {user?.email}
+                        <Button onClick={logout}>Sign Out</Button>
                     </div>
-                </Card>
-                <Routes>
-                    <Route exact path="/SingIn" element={<Signin />} />
-                    {/* <Route exact path="/" element={ < Signup /> } /> */}
-                </Routes>
-            </Router>
+                </Card.Body>
+            </Card>
         </>
     );
 }

@@ -1,9 +1,9 @@
 .container{
     display: flex;
     min-height: 100vh;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
 }
-.sign-up{
+SignUp{
     max-width: 400px;
 }

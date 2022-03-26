@@ -40,11 +40,10 @@ const Signin = () => {
 
     return (
         <>
-            <Card>
+            <Card className='w-75 align-items-center'>
                 
                 <Card.Body>
                     <h2 className='text-center mb-4'>Log In</h2>
-
                     <Form>
                         <Form.Group>
                             <Form.Label>Email</Form.Label>
@@ -62,13 +61,12 @@ const Signin = () => {
                         <Button className="w-100" onClick={login} >Sign In</Button>
 
                     </Form>
-                    <div className='w-100 text-center mt-2'>
+                    <div className='w-100 text-center mt-4'>
                         <h4>user logged in:</h4>
                         {user?.email}
                         <Button onClick={logout}>Sign Out</Button>
                     </div>
                 </Card.Body>
-               
             </Card>
 
 
