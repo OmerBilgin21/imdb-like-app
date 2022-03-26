@@ -28,8 +28,8 @@ const Filmapi = () => {
         comingFilms && comingFilms.map(films =>
             <div key={films.results}>
                 <Card className='mt-4'>
-                    <img src={'https://image.tmdb.org/t/p/w500'+films.poster_path} alt="" />
                     <Card.Body>
+                    <img className='card-image-top' src={'https://image.tmdb.org/t/p/w500'+films.poster_path} alt="poster" />
                         <ul>
                             <li>
                                 <h5 className='card-title'>
@@ -39,14 +39,21 @@ const Filmapi = () => {
                                     Rank: {films.vote_average}
                                 </p>
                                 <p className='card-text'>
+                                    Vote count: {films.vote_count}
+                                </p>
+                                <p className='card-text w-50'>
                                     Description: {films.overview}
+                                </p>
+                                <p className='text-muted'>
+                                    Release date: {films.release_date}
+                                </p>
+                                <p className='text-muted'>
+                                    Viewed: {films.popularity}
                                 </p>
                             </li>
                         </ul>
                     </Card.Body>
-
                 </Card>
-
             </div>
         )
     );
