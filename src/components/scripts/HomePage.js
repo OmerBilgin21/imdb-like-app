@@ -1,11 +1,11 @@
 import React from 'react';
-import { Carousel, Placeholder } from 'react-bootstrap';
+import { Carousel, Placeholder, Container } from 'react-bootstrap';
 import '../css/HomePage.css';
 import { } from '../images/pp.jpeg'
 const HomePage = () => {
     return (
-        <div className='reach-home'>
 
+        <Container className='align-items-center'>
             <Carousel bg='dark' variant='light'>
 
                 <Carousel.Item>
@@ -128,7 +128,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </Container>
     );
 }
 

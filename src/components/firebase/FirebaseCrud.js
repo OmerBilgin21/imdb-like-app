@@ -25,7 +25,7 @@ const Firebasecrud = () => {
 
     return (
         <>
-            <Container style={{color: 'black'}}>
+            <Container className='w-75' style={{ color: 'black' }}>
                 <Card className='w-100 align-items-center'>
                     <Card.Body>
                         <h3>Which movie is not on our website?</h3>
@@ -40,24 +40,24 @@ const Firebasecrud = () => {
                         <Button variant='outline-dark' className='w-50 mt-2' onClick={createFilm}>Submit</Button>
                     </Card.Body>
                 </Card>
+                <br />
+
+                <div className='rest'>
+                    <h1 style={{ color: 'white', textAlign: 'center' }}>Recommended So Far: </h1>
+                    {thisFilms.map((films) => {
+                        return (
+                            <Card className='w-100 align-items-center mt-4'>
+                                <Card.Body>
+                                    <h1>Name: {films.name}</h1>
+                                    <h1>Producer: {films.producer}</h1>
+                                </Card.Body>
+
+
+                            </Card>
+                        );
+                    })}
+                </div>
             </Container>
-            <br />
-
-            <div className='rest'>
-                <h1 style={{ color: 'white', textAlign: 'center' }}>Recommended So Far: </h1>
-                {thisFilms.map((films) => {
-                    return (
-                        <Card style={{ maxWidth: '840px' }} className='w-100 align-items-center mt-4'>
-                            <Card.Body>
-                                <h1>Name: {films.name}</h1>
-                                <h1>Producer: {films.producer}</h1>
-                            </Card.Body>
-
-
-                        </Card>
-                    );
-                })}
-            </div>
         </>
     );
 }
