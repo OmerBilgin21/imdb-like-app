@@ -1,11 +1,7 @@
 
 import React, { useState } from 'react';
 import { Card, Form, Button } from 'react-bootstrap'
-import {
-    createUserWithEmailAndPassword,
-    onAuthStateChanged,
-    signOut
-} from 'firebase/auth'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../firebase/FirebaseConfig'
 import '../css/SignUp.css'
 
@@ -13,12 +9,6 @@ const Signup = () => {
 
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
-
-    const [user, setUser] = useState({});
-
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-    });
 
     const register = async () => {
         try {
@@ -33,14 +23,9 @@ const Signup = () => {
         }
     };
 
-    const logout = async () => {
-        await signOut(auth);
-    };
-
-
     return (
         <>
-            <Card className='w-100 align-items-center' style={{maxWidth: '720px'}}>
+            <Card className='w-100 align-items-center' style={{ height: '100vh' }}>
                 <Card.Body>
                     <h2 className='text-center mb-4'>Register</h2>
                     <Form>
@@ -57,14 +42,8 @@ const Signup = () => {
                             }} />
                         </Form.Group>
                         <br />
-                        <Button className="w-100" onClick={register} >Sign Up</Button>
+                        <Button className="w-100" variant='outline-success' onClick={register} >Sign Up</Button>
                     </Form>
-
-                    <div className='w-100 text-center mt-4'>
-                        <h4>user logged in:</h4>
-                        {user?.email}
-                        <Button onClick={logout}>Sign Out</Button>
-                    </div>
                 </Card.Body>
             </Card>
         </>

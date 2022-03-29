@@ -1,0 +1,21 @@
+.about-us{
+    color: #eee;
+    background-color: rgb(33, 37, 41);
+    height: 100vh;
+}
+.about-us ul{
+    list-style: none;
+}
+.about-us li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.about-us li img{
+    scale: 1;
+    width: 175px;
+    border-radius: 50%;
+    max-width: 200px;
+    max-height: 200px;
+}

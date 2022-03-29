@@ -2,23 +2,13 @@ import React, { useState } from 'react';
 import { auth } from '../firebase/FirebaseConfig'
 import { Card, Form, Button } from 'react-bootstrap'
 
-import {
-    onAuthStateChanged,
-    signInWithEmailAndPassword,
-    signOut
-} from 'firebase/auth'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
 
 const Signin = () => {
 
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
-
-    const [user, setUser] = useState({});
-
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-    });
 
     const login = async () => {
         try {
@@ -33,14 +23,9 @@ const Signin = () => {
         }
     };
 
-    const logout = async () => {
-        await signOut(auth);
-    };
-
-
     return (
         <div className='reach-signin'>
-            <Card className='w-100 d-flex align-items-center' style={{maxWidth: '720px'}}>
+            <Card className='w-100 d-flex align-items-center' style={{ height: '100vh' }} >
                 <Card.Body>
                     <h2 className='text-center mb-4'>Log In</h2>
                     <Form>
@@ -57,13 +42,8 @@ const Signin = () => {
                             }} />
                         </Form.Group>
                         <br />
-                        <Button className="w-100" onClick={login} >Sign In</Button>
+                        <Button variant='outline-success' className="w-100" onClick={login} >Sign In</Button>
                     </Form>
-                    <div className='w-100 text-center mt-4'>
-                        <h4>user logged in:</h4>
-                        {user?.email}
-                        <Button onClick={logout}>Sign Out</Button>
-                    </div>
                 </Card.Body>
             </Card>
 

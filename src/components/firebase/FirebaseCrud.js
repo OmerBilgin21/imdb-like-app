@@ -10,7 +10,7 @@ const Firebasecrud = () => {
     const [newFilmName, setNewFilmName] = useState("");
     const [newProducer, setNewProducer] = useState("");
 
-    const createUser = async () => {
+    const createFilm = async () => {
         await addDoc(filmsCollectionReference, { name: newFilmName, producer: newProducer });
     }
 
@@ -25,9 +25,9 @@ const Firebasecrud = () => {
 
     return (
         <>
-            <Card className='w-75 align-items-center'>
+            <Card className='w-100 align-items-center'>
                 <Card.Body>
-                    <h3>Adding films</h3>
+                    <h3>Which movie is not on our website?</h3>
                     <Form className='w-50'>
                         <Form.Group>
                             <Form.Label>Name: </Form.Label>
@@ -36,21 +36,21 @@ const Firebasecrud = () => {
                             <Form.Control type="text" onChange={(e) => { setNewProducer(e.target.value) }}></Form.Control>
                         </Form.Group>
                     </Form>
-                    <Button className='w-50 mt-2' onClick={createUser}>Create User</Button>
+                    <Button className='w-50 mt-2' onClick={createFilm}>Submit</Button>
                 </Card.Body>
             </Card>
+            <br />
 
-            <div>
+            <div className='rest'>
+                <h1 style={{ color: 'white' , textAlign: 'center'}}>So Far Suggestions: </h1>
                 {thisFilms.map((films) => {
                     return (
-                        <Card className='mt-4'>
+                        <Card className='w-75 align-items-center mt-4'>
                             {/* <img className='width: 10px' src={films.img} alt="cover" /> */}
 
                             <Card.Body>
                                 <h1>Name: {films.name}</h1>
                                 <h1>Producer: {films.producer}</h1>
-                                {/* <Button className='w-50 mt-2' onClick={updateUser(films.id,films.name, films.producer)}>Update User
-                                </Button> */}
                             </Card.Body>
 
 

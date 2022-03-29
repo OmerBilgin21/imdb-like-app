@@ -3,7 +3,7 @@ import { Card, ListGroup } from 'react-bootstrap'
 
 import '../css/FilmApi.css'
 
-const Filmapi = () => {
+const PopularAtUs = () => {
 
     const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
     const [comingFilms, setComingFilms] = useState([]);
@@ -59,4 +59,4 @@ const Filmapi = () => {
     );
 }
 
-export default Filmapi;
+export default PopularAtUs;

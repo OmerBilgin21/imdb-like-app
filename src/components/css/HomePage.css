@@ -19,29 +19,11 @@ h1{
     margin-left: 1em;
     color: #eee;
 } */
-.ha{
+.reach-home{
     background-color: rgb(33, 37, 41);
+    height: 100%;
 }
 .container{
     display: grid;
     color: #eee;
-}
-.about-us{
-    color: #eee;
-}
-.about-us ul{
-    list-style: none;
-}
-.about-us li{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-.about-us li img{
-    scale: 1;
-    width: 175px;
-    border-radius: 50%;
-    max-width: 200px;
-    max-height: 200px;
 }

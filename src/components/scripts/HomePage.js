@@ -4,7 +4,7 @@ import '../css/HomePage.css';
 import { } from '../images/pp.jpeg'
 const HomePage = () => {
     return (
-        <div className='ha'>
+        <div className='reach-home'>
             <Carousel bg='dark' variant='light'>
                 <Carousel.Item>
                     <img
@@ -48,7 +48,7 @@ const HomePage = () => {
             </div>
 
             <div className="container px-4 py-5">
-                <h2 className="pb-2 border-bottom">What We Offer</h2>
+                <h2 className="pb-2 border-bottom">What Movie Box Offers</h2>
 
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
                     <div className="col d-flex align-items-start">
@@ -126,28 +126,6 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <div className='about-us'>
-                <ul>
-                    <li>
-                        <h2>About Creator</h2>
-                    </li>
-                    <li>
-                        <img src="https://drive.google.com/uc?export=download&id=1Qbgbg_I6gXD1rlgElnVRCGUdZwQKkNFb" alt="author" />
-                    </li>
-                    <li>
-                        I'm Omer Bilgin, a fourth grade computer engineering student/Front-end developer.<br/> You can see my other projects via GitHub and you can contact me via Email. Thank you for stopping by!
-                    </li>
-                    <br/>
-                    <li>
-                        Email: omrfrkblgn21@gmail.com <br/>
-                        GitHub: https://github.com/OmerBilgin21 <br/>
-                        LinkedIn: https://www.linkedin.com/in/omerbilgin21
-                    </li>
-                </ul>
-
-
-            </div>
-
         </div>
 
 

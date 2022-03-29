@@ -1,22 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, Button } from 'react-bootstrap';
-import Categorizedmovies from '../SortedByCategories/CategorizedMovies';
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Link
-} from 'react-router-dom';
 
-const Categories = () => {
+const Categorizedmovies = () => {
     const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+    const [getGenredFilms, setGetGenredFilms] = useState([]);
     const [myGenres, setMyGenres] = useState([]);
 
-    const getData = () => {
+    const getGenres = () => {
         fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`)
             .then(response => response.json())
             .then(function (myJson) {
-                console.log("myJson: ", myJson);
                 settingData(myJson.genres);
             })
             .catch(err => console.error(err));
@@ -24,13 +17,28 @@ const Categories = () => {
 
     const settingData = (filmGenres) => {
         setMyGenres(filmGenres);
-        console.log("myGenres: ", myGenres);
-        console.log("filmGenres", filmGenres);
     }
-    
+
+    const getByGenre = (a) => {
+        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${a}&with_watch_monetization_types=flatrate`)
+            .then(response => response.json())
+            .then(function (genredFilms) {
+                // console.log("genred films: ", genredFilms);
+                setupFilms(genredFilms.results);
+            })
+            .catch(err => console.error(err));
+    }
+
+    const setupFilms = (bored) => {
+        setGetGenredFilms(bored.results);
+        console.log("olması lazım", getGenredFilms)
+    }
+
     useState(() => {
-        getData();
+        getGenres();
     }, []);
+
+
 
     return (
         myGenres && myGenres.map(gettingGenres =>
@@ -41,7 +49,7 @@ const Categories = () => {
                                 <li>genre name: {gettingGenres.name}</li>
                                 <li>genre id: {gettingGenres.id}</li>
                                 <br />
-                                <Button variant='outline-success'>{<Link className='text-decoration-none' to="categorized" style={{ color: 'black' }} >Go To {gettingGenres.name}</Link>}</Button>
+                                <Button onClick={getByGenre(gettingGenres.id)} variant='outline-success'>Go to  {gettingGenres.name}</Button>
                             </ul>
                         </Card.Body>
                 </Card>                
@@ -51,4 +59,4 @@ const Categories = () => {
     );
 }
 
-export default Categories;
+export default Categorizedmovies;
