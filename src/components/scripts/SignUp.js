@@ -1,9 +1,7 @@
-
 import React, { useState } from 'react';
 import { Card, Form, Button } from 'react-bootstrap'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../firebase/FirebaseConfig'
-import '../css/SignUp.css'
 
 const Signup = () => {
 

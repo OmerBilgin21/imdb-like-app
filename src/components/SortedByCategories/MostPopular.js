@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, ListGroup, Button } from 'react-bootstrap'
+import { Card, ListGroup, Button, Row, Col } from 'react-bootstrap'
 
 const Mostpopular = () => {
 
@@ -24,23 +24,25 @@ const Mostpopular = () => {
     }, []);
 
     return (
-        mostPop && mostPop.map(films =>
-            <div className='reach-most-p' key={films.results}>
-                <Card className='d-flex mt-4' style={{ width: '18rem' }}>
-                    <Card.Img style={{ width: 'auto', height: 'auto', maxHeight: '300px' }} variant="top" src={IMG_URL + films.poster_path} />
-                    <Card.Body>
-                        <Card.Title>{films.title}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">Rank: {films.vote_average}</Card.Subtitle>
-                        <Card.Text>
-                            Release Date: {films.release_date}
-                            <br />
-                            Description: {films.overview}
-                        </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                </Card>
-            </div>
-        )
+
+        <Row xs={2} md={2} className="g-2">
+            {mostPop && mostPop.map(films =>
+                <div className='reach-most-p' key={films.results}>
+                    <Col>
+                        <Card className='w-75'>
+                            <Card.Img variant="top" src={IMG_URL + films.poster_path} />
+                            <Card.Body>
+                                <Card.Title>{films.title}</Card.Title>
+                                <Card.Subtitle>{films.vote_average}</Card.Subtitle>
+                                <Card.Text style={{ maxHeight: '100px', overflow: 'auto' }}>
+                                    {films.overview}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </div>
+            )}
+        </Row>
     );
 }
 

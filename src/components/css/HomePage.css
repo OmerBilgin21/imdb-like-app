@@ -1,27 +1,5 @@
-/* .spacer{
-    background-color: #eee;
-}
-h1{
-    margin-left: 0.5em;
-}
-
-.features{
-    color: #808080;
-}
-.features ul li{
-    border: 1px solid #eee;
-    margin: 1rem;
-}
-.convince{
-    color: #808080;
-}
-.convince .linker{
-    margin-left: 1em;
-    color: #eee;
-} */
 .reach-home{
     background-color: rgb(33, 37, 41);
-    height: 100%;
 }
 .container{
     display: grid;
