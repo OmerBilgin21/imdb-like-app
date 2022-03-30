@@ -6,7 +6,8 @@ import {
     NavDropdown,
     Offcanvas,
     Form,
-    Button
+    Button,
+    FormControl
 } from 'react-bootstrap';
 import { auth } from '../firebase/FirebaseConfig'
 import {
@@ -43,7 +44,7 @@ const NavBarr = () => {
                 <Navbar bg="dark" expand={false} variant='dark'>
                     <Container fluid>
                         <Navbar.Brand href="/">Movie <span>Box</span></Navbar.Brand>
-                        <Navbar.Toggle aria-controls="offcanvasNavbar" />
+                        <Navbar.Toggle style={{ marginLeft: '10px' }} aria-controls="offcanvasNavbar" />
                         <Navbar.Offcanvas
                             id="offcanvasNavbar"
                             aria-labelledby="offcanvasNavbarLabel"

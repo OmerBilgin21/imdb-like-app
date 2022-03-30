@@ -5,9 +5,8 @@ import { } from '../images/pp.jpeg'
 const HomePage = () => {
     return (
 
-        <Container className='align-items-center'>
-            <Carousel bg='dark' variant='light'>
-
+        <Container className='align-items-center' style={{maxWidth: '900px'}}>
+            <Carousel style={{marginTop: '10px'}} bg='dark' variant='light'>
                 <Carousel.Item>
                     <img
                         className="d-block"

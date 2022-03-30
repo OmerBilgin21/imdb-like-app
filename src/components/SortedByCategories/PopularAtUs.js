@@ -19,61 +19,38 @@ const PopularAtUs = () => {
         setComingFilms(filmData);
         console.log("coming films: ", comingFilms);
     }
+
+    const viewDesc = (descId) => {
+        document.getElementById(descId).classList.toggle('d-none')
+    }
+
     useEffect(() => {
         getData();
     }, []);
     return (
+        <>
+            <h1 style={{ textAlign: 'center', color: 'white' }}>Most Popular TV Shows</h1>
+            <br />
+            <Row xs={2} md={2} className="g-2">
+                {comingFilms && comingFilms.map(films =>
 
-        <Row xs={2} md={2} className="g-2">
-            {comingFilms && comingFilms.map(films =>
-
-                <div key={films.results}>
-                    <Col>
-                        <Card className='w-75'>
-                            <Card.Img variant="top" src={IMG_URL + films.poster_path} />
-                            <Card.Body>
-                                <Card.Title>{films.name}</Card.Title>
-                                <Card.Text style={{ maxHeight: '100px', overflow: 'auto' }}>
-                                    {films.overview}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                </div>
-            )}
-        </Row>
-
-        // comingFilms && comingFilms.map(films =>
-        //     <div key={films.results}>
-        //         <Card className='mt-4'>
-        //             <Card.Body>
-        //                 <img className='card-image-top' src={'https://image.tmdb.org/t/p/w500' + films.poster_path} alt="poster" />
-        //                 <ListGroup>
-        //                     <ListGroup.Item>
-        //                         <h5 className='card-title'>
-        //                             Name: {films.original_title}
-        //                         </h5>
-        //                         <p className='card-text'>
-        //                             Rank: {films.vote_average}
-        //                         </p>
-        //                         <p className='card-text'>
-        //                             Vote count: {films.vote_count}
-        //                         </p>
-        //                         <p className='card-text w-50'>
-        //                             Description: {films.overview}
-        //                         </p>
-        //                         <p className='text-muted'>
-        //                             Release date: {films.release_date}
-        //                         </p>
-        //                         <p className='text-muted'>
-        //                             Viewed: {films.popularity}
-        //                         </p>
-        //                     </ListGroup.Item>
-        //                 </ListGroup>
-        //             </Card.Body>
-        //         </Card>
-        //     </div>
-        // )
+                    <div key={films.results}>
+                        <Col>
+                            <Card className='w-75'>
+                                <Card.Img onMouseEnter={() => viewDesc(films.id)} onMouseLeave={() => viewDesc(films.id)} variant="top" src={IMG_URL + films.poster_path} />
+                                <Card.Body>
+                                    <Card.Title>{films.name}</Card.Title>
+                                    <Card.Subtitle>{films.vote_average}</Card.Subtitle>
+                                    <Card.Text className='d-none' id={films.id}>
+                                        {films.overview}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </div>
+                )}
+            </Row>
+        </>
     );
 }
 

@@ -19,30 +19,38 @@ const Mostpopular = () => {
         setMostPop(mostPopData);
         console.log("most popular films: ", mostPop);
     }
+
+    const viewDesc = (myId) => {
+        document.getElementById(myId).classList.toggle('d-none');
+    }
+
     useEffect(() => {
         getData();
     }, []);
 
     return (
-
-        <Row xs={2} md={2} className="g-2">
-            {mostPop && mostPop.map(films =>
-                <div className='reach-most-p' key={films.results}>
-                    <Col>
-                        <Card className='w-75'>
-                            <Card.Img variant="top" src={IMG_URL + films.poster_path} />
-                            <Card.Body>
-                                <Card.Title>{films.title}</Card.Title>
-                                <Card.Subtitle>{films.vote_average}</Card.Subtitle>
-                                <Card.Text style={{ maxHeight: '100px', overflow: 'auto' }}>
-                                    {films.overview}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                </div>
-            )}
-        </Row>
+        <>
+            <h1 style={{ textAlign: 'center', color: 'white' }}>Most Popular Movies of All Time</h1>
+            <br />
+            <Row xs={2} md={2} className="g-2">
+                {mostPop && mostPop.map(films =>
+                    <div className='reach-most-p' key={films.id}>
+                        <Col>
+                            <Card className='w-75'>
+                                <Card.Img onMouseEnter={() => viewDesc(films.id)} onMouseLeave={() => viewDesc(films.id)} variant="top" src={IMG_URL + films.poster_path} />
+                                <Card.Body>
+                                    <Card.Title>{films.title}</Card.Title>
+                                    <Card.Subtitle>{films.vote_average}</Card.Subtitle>
+                                    <Card.Text id={films.id} className='d-none' >
+                                        {films.overview}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </div>
+                )}
+            </Row>
+        </>
     );
 }
 
