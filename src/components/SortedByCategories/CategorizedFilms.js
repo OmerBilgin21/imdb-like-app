@@ -91,15 +91,15 @@ const Categorizedfilms = () => {
             )}
             <br />
             <br />
-            <Row xs={2} md={2} className="g-2">
+            <Row xs={3} md={6} className="g-3">
                 {genredFilms && genredFilms.map(genred =>
                     <div className='final-film' key={genred.id}>
                         <Col>
-                            <Card className='w-75'>
+                            <Card className='w-100'>
                                 <Card.Img onMouseEnter={() => viewDesc(genred.id)} onMouseLeave={() => viewDesc(genred.id)} variant="top" src={IMG_URL + genred.poster_path} />
                                 <Card.Body>
                                     <Card.Title style={{maxHeight: '25px', overflow: 'visible'}}>{genred.title}</Card.Title>
-                                    <Card.Subtitle className='mt-4'>{genred.vote_average}</Card.Subtitle>
+                                    <Card.Subtitle style={{marginTop: '4rem'}}>{genred.vote_average}</Card.Subtitle>
                                     <Card.Text id={genred.id} className="d-none">
                                         {genred.overview}
                                     </Card.Text>

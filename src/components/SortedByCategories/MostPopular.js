@@ -32,11 +32,11 @@ const Mostpopular = () => {
         <>
             <h1 style={{ textAlign: 'center', color: 'white' }}>Most Popular Movies of All Time</h1>
             <br />
-            <Row xs={2} md={2} className="g-2">
+            <Row xs={3} md={6} className="g-2">
                 {mostPop && mostPop.map(films =>
                     <div className='reach-most-p' key={films.id}>
                         <Col>
-                            <Card className='w-75'>
+                            <Card className='w-100'>
                                 <Card.Img onMouseEnter={() => viewDesc(films.id)} onMouseLeave={() => viewDesc(films.id)} variant="top" src={IMG_URL + films.poster_path} />
                                 <Card.Body>
                                     <Card.Title>{films.title}</Card.Title>
