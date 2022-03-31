@@ -23,7 +23,7 @@ const Signup = () => {
 
     return (
         <>
-            <Card className='w-100 align-items-center' style={{ height: '100vh' }}>
+            <Card className='w-100 align-items-center' style={{ height: '100vh',color: 'white',backgroundColor: '#212529' }}>
                 <Card.Body>
                     <h2 className='text-center mb-4'>Register</h2>
                     <Form>
@@ -40,7 +40,7 @@ const Signup = () => {
                             }} />
                         </Form.Group>
                         <br />
-                        <Button className="w-100" variant='outline-success' onClick={register} >Sign Up</Button>
+                        <Button className="w-100" variant='outline-light' onClick={register} >Sign Up</Button>
                     </Form>
                 </Card.Body>
             </Card>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
     Card,
     Button,
@@ -6,9 +6,9 @@ import {
     Col,
     ButtonToolbar,
     ButtonGroup,
+    Container,
     Form,
-    FormControl,
-    Container
+    FormControl
 } from 'react-bootstrap';
 
 const Categorizedfilms = () => {
@@ -18,7 +18,8 @@ const Categorizedfilms = () => {
     const [myGenres, setMyGenres] = useState([]);
     const [myGenreId, setMyGenreId] = useState(16);
     const [page, setPage] = useState(1);
-    const [searchedFilms, setSearchedFilms] = useState("hob");
+    const [searchedKeyword, setSearchedKeyword] = useState("Search");
+    const [searchedArr, setSearchedArr] = useState([]);
 
     const getGenres = () => {
         fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`)
@@ -44,12 +45,35 @@ const Categorizedfilms = () => {
     const goToNextPage = () => {
         setPage(page + 1);
         sortFilms(myGenreId, page);
+
     }
 
     const goToPreviousPage = () => {
         if (page === 1) return setPage(1);
         setPage(page - 1);
         sortFilms(myGenreId, page);
+    }
+
+    const setupSearchFilms = (searchedKeyword) => {
+        if (searchedKeyword === undefined) return searchFilms(" ");
+
+        console.log("searched keyword: ", searchedKeyword);
+        searchFilms(searchedKeyword);
+    }
+
+    const searchFilms = (myKeyword) => {
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${myKeyword}&page=1&include_adult=false`)
+            .then(response => response.json())
+            .then(function (searchFilmsJson) {
+                console.log("searchFilmsJson: ", searchFilmsJson);
+                displaySearchedFunc(searchFilmsJson.results);
+            })
+            .catch(err => console.error(err));
+    }
+
+    const displaySearchedFunc = (searchedFilmsJson) => {
+        setSearchedArr(searchedFilmsJson);
+        console.log("searchedArr: ", searchedArr);
     }
 
     const sortFilms = (genreId, myPage) => {
@@ -61,8 +85,6 @@ const Categorizedfilms = () => {
             })
             .catch(err => console.error(err));
     }
-
-
 
     const filmSorting = (genredFilmsJson) => {
         setGenredFilms(genredFilmsJson);
@@ -80,11 +102,45 @@ const Categorizedfilms = () => {
 
     return (
         <>
+            <br />
+            <Container className='d-flex align-items-start justify-content-start'>
+                <Form className="d-flex">
+                    <FormControl
+                        type="search"
+                        id='controller'
+                        placeholder="Search"
+                        className="me-2"
+                        aria-label="Search"
+                        defaultValue=""
+                        onChange={(e) => { setSearchedKeyword(e.target.value); setupSearchFilms(searchedKeyword) }}
+                    />
+                    <Button onClick={(e) => { setSearchedKeyword(" "); setupSearchFilms() }} variant="outline-light">Close</Button>
+                </Form>
+                <br />
+                <br />
+            </Container>
+            <Row xs={3} md={6} className="g-3">
+                {searchedArr && searchedArr.map(searched =>
+                    <div key={searched.id}>
+                        <Col>
+                            <Card className="w-75" style={{ color: 'black' }}>
+                                <Card.Img variant="top" src={IMG_URL + searched.poster_path} />
+                                <Card.Body>
+                                    <Card.Title>{searched.title}</Card.Title>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </div>
+                )}
+            </Row>
+            <br />
+            <br />
+            <br />
             <h1 style={{ color: 'white', textAlign: 'center' }}>Sort By Category!</h1>
             {myGenres && myGenres.map(genres =>
                 <ButtonToolbar className='d-inline-flex mt-3' aria-label="Toolbar with button groups">
                     <ButtonGroup className="me-2" aria-label="First group">
-                        <Button className='btn-' onClick={() => setupFilms(genres.id)} style={{ borderRadius: '5em' }} variant='outline-light'>{genres.name}</Button>
+                        <Button onClick={() => setupFilms(genres.id)} style={{ borderRadius: '5em' }} variant='outline-light'>{genres.name}</Button>
                     </ButtonGroup>
                 </ButtonToolbar>
 
@@ -98,8 +154,8 @@ const Categorizedfilms = () => {
                             <Card className='w-100'>
                                 <Card.Img onMouseEnter={() => viewDesc(genred.id)} onMouseLeave={() => viewDesc(genred.id)} variant="top" src={IMG_URL + genred.poster_path} />
                                 <Card.Body>
-                                    <Card.Title style={{maxHeight: '25px', overflow: 'visible'}}>{genred.title}</Card.Title>
-                                    <Card.Subtitle style={{marginTop: '4rem'}}>{genred.vote_average}</Card.Subtitle>
+                                    <Card.Title style={{ maxHeight: '25px', overflow: 'visible' }}>{genred.title}</Card.Title>
+                                    <Card.Subtitle style={{ marginTop: '4rem' }}>{genred.vote_average}</Card.Subtitle>
                                     <Card.Text id={genred.id} className="d-none">
                                         {genred.overview}
                                     </Card.Text>

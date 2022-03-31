@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Card, ListGroup, Row, Col } from 'react-bootstrap'
+import { Card, Row, Col } from 'react-bootstrap'
 const PopularAtUs = () => {
 
     const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
     const [comingFilms, setComingFilms] = useState([]);
     const IMG_URL = 'https://image.tmdb.org/t/p/w500';
-    // ${API_KEY}
     const getData = () => {
         fetch(`https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}`)
             .then(response => response.json())
@@ -31,12 +30,12 @@ const PopularAtUs = () => {
         <>
             <h1 style={{ textAlign: 'center', color: 'white' }}>Most Popular TV Shows</h1>
             <br />
-            <Row xs={2} md={2} className="g-2">
+            <Row xs={3} md={6} className="g-2">
                 {comingFilms && comingFilms.map(films =>
 
                     <div key={films.results}>
                         <Col>
-                            <Card className='w-75'>
+                            <Card className='w-100'>
                                 <Card.Img onMouseEnter={() => viewDesc(films.id)} onMouseLeave={() => viewDesc(films.id)} variant="top" src={IMG_URL + films.poster_path} />
                                 <Card.Body>
                                     <Card.Title>{films.name}</Card.Title>

@@ -25,7 +25,7 @@ const Signin = () => {
 
     return (
         <div className='reach-signin'>
-            <Card className='w-100 d-flex align-items-center' style={{ height: '100vh' }} >
+            <Card className='w-100 d-flex align-items-center' style={{ height: '100vh',color: 'white',backgroundColor: '#212529' }} >
                 <Card.Body>
                     <h2 className='text-center mb-4'>Log In</h2>
                     <Form>
@@ -42,7 +42,7 @@ const Signin = () => {
                             }} />
                         </Form.Group>
                         <br />
-                        <Button variant='outline-success' className="w-100" onClick={login} >Sign In</Button>
+                        <Button variant='outline-light' className="w-100" onClick={login} >Sign In</Button>
                     </Form>
                 </Card.Body>
             </Card>

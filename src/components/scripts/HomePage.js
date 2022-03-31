@@ -1,12 +1,12 @@
 import React from 'react';
-import { Carousel, Placeholder, Container } from 'react-bootstrap';
+import { Carousel, Container } from 'react-bootstrap';
 import '../css/HomePage.css';
 import { } from '../images/pp.jpeg'
 const HomePage = () => {
     return (
 
         <Container className='align-items-center' style={{maxWidth: '900px'}}>
-            <Carousel style={{marginTop: '10px'}} bg='dark' variant='light'>
+            <Carousel style={{marginTop: '5px'}} bg='dark' variant='light'>
                 <Carousel.Item>
                     <img
                         className="d-block"
