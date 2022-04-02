@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Card,
     Button,
@@ -92,13 +92,20 @@ const Categorizedfilms = () => {
     }
 
     const viewDesc = (descId) => {
-        document.getElementById(descId).classList.toggle('d-none')
+        const overview = document.getElementById(descId);
+        overview.classList.toggle('d-none');
     }
 
     useEffect(() => {
         getGenres();
         setupFilms();
     }, []);
+
+    const checkEr = (myImg) => {
+        if(myImg === null) return 'https://drive.google.com/uc?export=download&id=1GWvewAMlc1ZcGtOqD1eLwX_klApenL6T'
+        const regularImg = `${IMG_URL+myImg}`;
+        return regularImg;
+    }
 
     return (
         <>
@@ -123,10 +130,10 @@ const Categorizedfilms = () => {
                 {searchedArr && searchedArr.map(searched =>
                     <div key={searched.id}>
                         <Col>
-                            <Card className="w-75" style={{ color: 'black' }}>
-                                <Card.Img variant="top" src={IMG_URL + searched.poster_path} />
+                            <Card className="w-75" style={{ color: 'black', maxHeight: '250px' }}>
+                                <Card.Img style={{ maxHeight: '150px' }} variant="top" src={checkEr(searched.poster_path)} />
                                 <Card.Body>
-                                    <Card.Title>{searched.title}</Card.Title>
+                                    <Card.Title style={{ maxHeight: '28px' }}>{searched.title}</Card.Title>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -151,12 +158,12 @@ const Categorizedfilms = () => {
                 {genredFilms && genredFilms.map(genred =>
                     <div className='final-film' key={genred.id}>
                         <Col>
-                            <Card className='w-100'>
-                                <Card.Img onMouseEnter={() => viewDesc(genred.id)} onMouseLeave={() => viewDesc(genred.id)} variant="top" src={IMG_URL + genred.poster_path} />
+                            <Card style={{ border: '0' }} className='w-100'>
+                                <Card.Img style={{ maxHeight: '280px', overflow: 'hidden' }} onMouseEnter={() => viewDesc(genred.id)} onMouseLeave={() => viewDesc(genred.id)} variant="top" src={checkEr(genred.poster_path)} />
                                 <Card.Body>
                                     <Card.Title style={{ maxHeight: '25px', overflow: 'visible' }}>{genred.title}</Card.Title>
                                     <Card.Subtitle style={{ marginTop: '4rem' }}>{genred.vote_average}</Card.Subtitle>
-                                    <Card.Text id={genred.id} className="d-none">
+                                    <Card.Text drop='up' id={genred.id} className="d-none">
                                         {genred.overview}
                                     </Card.Text>
                                 </Card.Body>

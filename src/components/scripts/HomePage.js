@@ -1,12 +1,12 @@
-import React from 'react';
-import { Carousel, Container } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Carousel, Container, Tab, Tabs, Button } from 'react-bootstrap';
 import '../css/HomePage.css';
-import { } from '../images/pp.jpeg'
 const HomePage = () => {
+    const [key, setKey] = useState('home');
     return (
 
-        <Container className='align-items-center' style={{maxWidth: '900px'}}>
-            <Carousel style={{marginTop: '5px'}} bg='dark' variant='light'>
+        <Container className='align-items-center' style={{ maxWidth: '900px' }}>
+            <Carousel style={{ marginTop: '5px' }} bg='dark' variant='light'>
                 <Carousel.Item>
                     <img
                         className="d-block"
@@ -127,6 +127,32 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
+            <Container className='justify-content-center'>
+                <Tabs
+                    id="controlled-tab-example"
+                    activeKey={key}
+                    onSelect={(k) => setKey(k)}
+                    className="mb-3 w-75"
+                    style={{ color: 'black' }}
+                    variant='pills'
+                >
+                    <Tab className="w-75" eventKey="home" title="One for All">
+                        <h2>A one-stop platform for all your needs</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet ligula magna. Maecenas id tristique nisi, ac aliquam quam. Quisque auctor efficitur enim, quis congue augue interdum a.</p><p>At Movie Box we are passionate about Watching Movies/TV Shows and are dedicated to</p><ul><li>focusing on finding you the best Movie Social Media</li><li>giving you a pleasant experience</li><li>provide you a hassle-free service</li></ul><h3>Lorem ipsum dolor sit amet:</h3><p>Morbi lobortis rhoncus erat et egestas. Mauris lorem lectus, elementum nec mauris efficitur, venenatis sollicitudin enim. Duis sed justo nec orci laoreet viverra at quis urna. Aliquam rhoncus justo vitae dolor dignissim tincidunt. Suspendisse nec finibus eros. Curabitur feugiat in ex non vulputate. Vestibulum ac bibendum nisi, id consequat felis.</p>
+                    </Tab>
+                    <Tab eventKey="profile" title="To Success">
+                        <h2>Succeed with Movie Box</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet ligula magna. Maecenas id tristique nisi, ac aliquam quam. Quisque auctor efficitur enim, quis congue augue interdum a.</p><p>At Movie Box we are passionate about Watching Movies/TV Shows and are dedicated to</p><ul><li>focusing on finding you the best Movie Social Media</li><li>giving you a pleasant experience</li><li>provide you a hassle-free service</li></ul><h3>Lorem ipsum dolor sit amet</h3><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non, est?
+                        </p><h3>Lorem ipsum dolor sit amet</h3><p>Duis aliquam vehicula sem, sed scelerisque turpis. Cras at purus quis tortor semper semper at sed lacus. Sed vel eros non sem facilisis dapibus. Proin dignissim odio vitae augue gravida placerat. Vestibulum vehicula imperdiet diam, ut efficitur lacus. Vestibulum lobortis mi eget tristique tempor.</p>
+                    </Tab>
+                    <Tab eventKey="contact" title="Effortless">
+                        <h2>Without Effort</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet ligula magna. Maecenas id tristique nisi, ac aliquam quam. Quisque auctor efficitur enim, quis congue augue interdum a.</p><p>At Movie Box we are passionate about Movies and are dedicated to</p><ul><li>providing quality service</li><li>giving you quality service and the best deals possible.</li><li>giving your the best prices and quality service</li></ul><p>Movie Box offers a range of affordable, effective solutions for your business. From starting an online store to renting space, we have everything you need to succeed!</p>
+                    </Tab>
+                </Tabs>
+                <p>We are dedicated to helping you find the film that's right for you, so start your free experience today!</p>
+                <Button href='/signup' className='w-50' variant='outline-light'>                                    Sign Up!
+                </Button>
+            </Container>
+            <br />
+            <br />
         </Container>
     );
 }

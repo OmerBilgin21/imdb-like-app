@@ -3,10 +3,13 @@ import '../css/AboutUs.css'
 const Aboutus = () => {
     return (
         <div className='about-us'>
+            <br/>
+            <br/>
             <ul>
                 <li>
                     <h2>About Creator</h2>
                 </li>
+                <br/>
                 <li>
                     <img src="https://drive.google.com/uc?export=download&id=1Qbgbg_I6gXD1rlgElnVRCGUdZwQKkNFb" alt="author" />
                 </li>
