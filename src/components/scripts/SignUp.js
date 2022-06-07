@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Card, Form, Button } from 'react-bootstrap'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../firebase/FirebaseConfig'
+import { Link } from 'react-router-dom';
+import { hover } from '@testing-library/user-event/dist/hover';
+import Signin from './SignIn';
 
 const Signup = () => {
 
@@ -40,7 +43,11 @@ const Signup = () => {
                             }} />
                         </Form.Group>
                         <br />
-                        <Button className="w-100" variant='outline-light' onClick={register} >Sign Up</Button>
+                        <Form.Label>Your password should contain 6 characters.</Form.Label>
+                        <Button className="w-100" variant='outline-light' onClick={register} >{<a style={{textDecoration: 'none', color: 'white'}} href="/">Sign Up</a>}</Button>
+                        <br/>
+                        <br/>
+                        <p>Already have an account?&nbsp;&nbsp; {<a style={{textDecoration: 'none', color: 'white'}} href="./SignIn">Sign In</a>}</p>
                     </Form>
                 </Card.Body>
             </Card>

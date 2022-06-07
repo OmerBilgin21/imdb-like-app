@@ -37,10 +37,10 @@ const Mostpopular = () => {
                     <div className='reach-most-p' key={films.id}>
                         <Col>
                             <Card className='w-100'>
-                                <Card.Img onMouseEnter={() => viewDesc(films.id)} onMouseLeave={() => viewDesc(films.id)} variant="top" src={IMG_URL + films.poster_path} />
+                                <Card.Img style={{ maxHeight: '280px', overflow: 'hidden' }} onMouseEnter={() => viewDesc(films.id)} onMouseLeave={() => viewDesc(films.id)} variant="top" src={IMG_URL + films.poster_path} />
                                 <Card.Body>
-                                    <Card.Title>{films.title}</Card.Title>
-                                    <Card.Subtitle>{films.vote_average}</Card.Subtitle>
+                                    <Card.Title style={{ maxHeight: '25px', overflow: 'visible' }} >{films.title}</Card.Title>
+                                    <Card.Subtitle style={{ marginTop: '4rem' }} >{films.vote_average}</Card.Subtitle>
                                     <Card.Text id={films.id} className='d-none' >
                                         {films.overview}
                                     </Card.Text>

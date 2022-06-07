@@ -136,17 +136,17 @@ const HomePage = () => {
                     style={{ color: 'black' }}
                     variant='pills'
                 >
-                    <Tab className="w-75" eventKey="home" title="One for All">
-                        <h2>A one-stop platform for all your needs</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet ligula magna. Maecenas id tristique nisi, ac aliquam quam. Quisque auctor efficitur enim, quis congue augue interdum a.</p><p>At Movie Box we are passionate about Watching Movies/TV Shows and are dedicated to</p><ul><li>focusing on finding you the best Movie Social Media</li><li>giving you a pleasant experience</li><li>provide you a hassle-free service</li></ul><h3>Lorem ipsum dolor sit amet:</h3><p>Morbi lobortis rhoncus erat et egestas. Mauris lorem lectus, elementum nec mauris efficitur, venenatis sollicitudin enim. Duis sed justo nec orci laoreet viverra at quis urna. Aliquam rhoncus justo vitae dolor dignissim tincidunt. Suspendisse nec finibus eros. Curabitur feugiat in ex non vulputate. Vestibulum ac bibendum nisi, id consequat felis.</p>
+                    <Tab className="w-75" eventKey="home" title="J. Smith">
+                        <h2>A one-stop platform for all your needs</h2><p>Movie box really helped me with my watchlist!</p><p>As a professional critic I am really impressed to see this kind of websites</p><p>Here is a list of what I found useful about Movie Box:</p><ul><li>They are a big candidate of a movie based social media</li><li>giving you a pleasant experience</li><li>provide you a hassle-free service</li></ul>
                     </Tab>
-                    <Tab eventKey="profile" title="To Success">
-                        <h2>Succeed with Movie Box</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet ligula magna. Maecenas id tristique nisi, ac aliquam quam. Quisque auctor efficitur enim, quis congue augue interdum a.</p><p>At Movie Box we are passionate about Watching Movies/TV Shows and are dedicated to</p><ul><li>focusing on finding you the best Movie Social Media</li><li>giving you a pleasant experience</li><li>provide you a hassle-free service</li></ul><h3>Lorem ipsum dolor sit amet</h3><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non, est?
-                        </p><h3>Lorem ipsum dolor sit amet</h3><p>Duis aliquam vehicula sem, sed scelerisque turpis. Cras at purus quis tortor semper semper at sed lacus. Sed vel eros non sem facilisis dapibus. Proin dignissim odio vitae augue gravida placerat. Vestibulum vehicula imperdiet diam, ut efficitur lacus. Vestibulum lobortis mi eget tristique tempor.</p>
+                    <Tab eventKey="profile" title="S. Stinson">
+                        <h2>No more waste of time!</h2><p>My experience with selecting movies and shows to watch are now much more easier!</p><p>It was always a hussle to find movies worth to watch. Since I started using Movie box I got rid of such thoughts.</p><ul><li>They have the best dynamic list structure.</li><li>No more a ton of useless features and adds.</li></ul><h3>Fastest movie recommendations!</h3><p>Who should've guessed this kind of a platform will come one day.</p>
                     </Tab>
-                    <Tab eventKey="contact" title="Effortless">
-                        <h2>Without Effort</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet ligula magna. Maecenas id tristique nisi, ac aliquam quam. Quisque auctor efficitur enim, quis congue augue interdum a.</p><p>At Movie Box we are passionate about Movies and are dedicated to</p><ul><li>providing quality service</li><li>giving you quality service and the best deals possible.</li><li>giving your the best prices and quality service</li></ul><p>Movie Box offers a range of affordable, effective solutions for your business. From starting an online store to renting space, we have everything you need to succeed!</p>
+                    <Tab eventKey="contact" title="K. Goodman">
+                        <h2>Without Effort</h2><p>They have a good platform with many good features but I'll be waiting until they decide to attack again</p><p>At Movie Box we are passionate about Movies and are dedicated to</p><ul><li>providing quality service</li><li>giving you quality service and the best deals possible.</li><li>giving your the best prices and quality service</li></ul><p>Movie Box offers a range of affordable, effective solutions for your business. From starting an online store to renting space, we have everything you need to succeed!</p>
                     </Tab>
                 </Tabs>
+                <br/>
                 <p>We are dedicated to helping you find the film that's right for you, so start your free experience today!</p>
                 <Button href='/signup' className='w-50' variant='outline-light'>                                    Sign Up!
                 </Button>

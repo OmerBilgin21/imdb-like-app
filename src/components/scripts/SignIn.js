@@ -24,8 +24,8 @@ const Signin = () => {
     };
 
     return (
-        <div className='reach-signin'>
-            <Card className='w-100 d-flex align-items-center' style={{ height: '100vh',color: 'white',backgroundColor: '#212529' }} >
+        <>
+            <Card className='w-100 align-items-center' style={{ height: '100vh',color: 'white',backgroundColor: '#212529' }} >
                 <Card.Body>
                     <h2 className='text-center mb-4'>Log In</h2>
                     <Form>
@@ -42,13 +42,17 @@ const Signin = () => {
                             }} />
                         </Form.Group>
                         <br />
-                        <Button variant='outline-light' className="w-100" onClick={login} >Sign In</Button>
+                        <Button variant='outline-light' className="w-100" onClick={(e) => login()} >{<a style={{textDecoration: 'none', color: 'white'}} href="/">Sign In</a>}</Button>
+                        {/*  <Button variant='outline-light' className="w-100" onClick={login} >Sign In</Button> */}
+                        <br/>
+                        <br/>
+                        <p>Don't have an account?&nbsp;&nbsp; {<a style={{textDecoration: 'none', color: 'white'}} href="./Signup">Sign Up</a>}</p>
                     </Form>
                 </Card.Body>
             </Card>
 
 
-        </div>
+        </>
     );
 }
 

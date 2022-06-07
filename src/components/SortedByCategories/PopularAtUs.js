@@ -36,10 +36,10 @@ const PopularAtUs = () => {
                     <div key={films.results}>
                         <Col>
                             <Card className='w-100'>
-                                <Card.Img onMouseEnter={() => viewDesc(films.id)} onMouseLeave={() => viewDesc(films.id)} variant="top" src={IMG_URL + films.poster_path} />
+                                <Card.Img style={{ maxHeight: '280px', overflow: 'hidden' }} onMouseEnter={() => viewDesc(films.id)} onMouseLeave={() => viewDesc(films.id)} variant="top" src={IMG_URL + films.poster_path} />
                                 <Card.Body>
-                                    <Card.Title>{films.name}</Card.Title>
-                                    <Card.Subtitle>{films.vote_average}</Card.Subtitle>
+                                    <Card.Title style={{ maxHeight: '25px', overflow: 'visible' }} >{films.name}</Card.Title>
+                                    <Card.Subtitle style={{ marginTop: '4rem' }} >{films.vote_average}</Card.Subtitle>
                                     <Card.Text className='d-none' id={films.id}>
                                         {films.overview}
                                     </Card.Text>

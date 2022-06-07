@@ -10,6 +10,9 @@ import {
     Form,
     FormControl
 } from 'react-bootstrap';
+import { addDoc, collection, doc } from 'firebase/firestore';
+import { db } from '../firebase/FirebaseConfig';
+
 
 const Categorizedfilms = () => {
     const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
@@ -20,6 +23,11 @@ const Categorizedfilms = () => {
     const [page, setPage] = useState(1);
     const [searchedKeyword, setSearchedKeyword] = useState("Search");
     const [searchedArr, setSearchedArr] = useState([]);
+    const [willBeSendedName, setWillBeSendedName] = useState('');
+    const [willBeSendedPoster, setWillBeSendedPoster] = useState('');
+    const userListsCollectionReference = collection(db, "userList");
+
+
 
     const getGenres = () => {
         fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`)
@@ -45,7 +53,6 @@ const Categorizedfilms = () => {
     const goToNextPage = () => {
         setPage(page + 1);
         sortFilms(myGenreId, page);
-
     }
 
     const goToPreviousPage = () => {
@@ -56,7 +63,6 @@ const Categorizedfilms = () => {
 
     const setupSearchFilms = (searchedKeyword) => {
         if (searchedKeyword === undefined) return searchFilms(" ");
-
         console.log("searched keyword: ", searchedKeyword);
         searchFilms(searchedKeyword);
     }
@@ -102,9 +108,23 @@ const Categorizedfilms = () => {
     }, []);
 
     const checkEr = (myImg) => {
-        if(myImg === null) return 'https://drive.google.com/uc?export=download&id=1GWvewAMlc1ZcGtOqD1eLwX_klApenL6T'
-        const regularImg = `${IMG_URL+myImg}`;
+        if (myImg === null) return 'https://drive.google.com/uc?export=download&id=1GWvewAMlc1ZcGtOqD1eLwX_klApenL6T'
+        const regularImg = `${IMG_URL + myImg}`;
         return regularImg;
+    }
+
+    const sendToFirebase = (poster, name) => {
+        setWillBeSendedName(name);
+        setWillBeSendedPoster(IMG_URL + poster);
+        console.log('name', willBeSendedName);
+        console.log('full poster path', willBeSendedPoster);
+        if (willBeSendedName !== '') {
+            finishSendingToFirebase(willBeSendedName, willBeSendedPoster);
+        }
+    }
+
+    const finishSendingToFirebase = async (nName, nPoster) => {
+        await addDoc(userListsCollectionReference, { name: nName, poster: nPoster })
     }
 
     return (
@@ -121,7 +141,7 @@ const Categorizedfilms = () => {
                         defaultValue=""
                         onChange={(e) => { setSearchedKeyword(e.target.value); setupSearchFilms(searchedKeyword) }}
                     />
-                    <Button onClick={(e) => { setSearchedKeyword(" "); setupSearchFilms() }} variant="outline-light">Close</Button>
+                    <Button type='reset' onClick={(e) => { setSearchedKeyword(" "); setupSearchFilms() }} variant="outline-light">Close</Button>
                 </Form>
                 <br />
                 <br />
@@ -166,6 +186,7 @@ const Categorizedfilms = () => {
                                     <Card.Text drop='up' id={genred.id} className="d-none">
                                         {genred.overview}
                                     </Card.Text>
+                                    <Button onClick={() => sendToFirebase(genred.poster_path, genred.title)} variant='outline-dark' className='btn btn-outline-dark' style={{ height: '40px', width: '100px', marginTop: '1rem' }}>Add to list</Button>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -180,6 +201,7 @@ const Categorizedfilms = () => {
                     <p style={{ color: 'white', marginLeft: '10px' }}>page: {page}</p>
                 </Card.Text>
             </Container>
+
         </>
     );
 }
